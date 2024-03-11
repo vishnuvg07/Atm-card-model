@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="atm.css">
+</head>
+<body>
+    <div id="inputbox">
+     <input id="input" type="text" placeholder=" ENTER BANK NAME"> <br><br>
+     <input id="input1" type="text" placeholder=" ENTER CARD HOLDER"><br><br>
+     <input id="input2" type="text" placeholder=" ENTER ACCOUNT NO" maxlength="14"><BR><br>
+     <input id="input3" type="text" placeholder=" ENTER EXP MM" maxlength="2"><BR><br>
+     <input id="input4" type="text" placeholder=" ENTER EXP YY" maxlength="4"><br><br><br>
+     <button type="submit" id="btn" onclick="show()">Submit</button>
+     <button id="toggle" onclick="myfuction()">hide account no</button>
+     </div>
+    <div id="atm-card">  
+        <div id="bank">
+           <p>enter the bank name</p>
+        </div> 
+        <div id="img2">
+            <img class="bankpic" src="bankpic.jpg">
+        </div>
+        <div id="img3">
+            <img class="wifipic" src="wifi.png">
+        </div>
+        <div id="img">
+            <img class="chip" src="https://cdn-icons-png.flaticon.com/128/9334/9334627.png">
+        </div>
+        <div id="card-holder">
+            <p>enter the card holder</p>
+        </div>
+        <div id="card-no">
+            <p>enter the account no</p>
+        </div> 
+        <div id="slash">
+            <p style="color: white;">/</p>
+        </div>
+        <div id="card-mm">
+            <p> mm</p>
+        </div> 
+        <div id="card-yy">
+            <p> yyyy</p>
+        </div>
+    </div>
+  
+    <script>
+
+     function show() 
+        {
+            document.getElementById('atm-card').style.display="block";
+            document.getElementById('btn').style.display = "block";
+        }
+        document.querySelector('#input').oninput = () =>{
+            document.querySelector('#bank').innerText = document.querySelector('#input').value;
+        }
+        document.querySelector('#input1').oninput = () =>{
+            document.querySelector('#card-holder').innerText = document.querySelector('#input1').value;
+        }
+        document.querySelector('#input2').oninput = () =>{
+            document.querySelector('#card-no').innerText = document.querySelector('#input2').value;
+        }
+        document.querySelector('#input3').oninput = () =>{
+            document.querySelector('#card-mm').innerText = document.querySelector('#input3').value;
+        }
+        document.querySelector('#input4').oninput = () =>{
+            document.querySelector('#card-yy').innerText = document.querySelector('#input4').value;
+        }
+        const input = document.getElementById("input2");
+  input.addEventListener("input", () => input.value = formatNumber(input.value.replaceAll(" ", "")));
+
+  const formatNumber = (number) => number.split("").reduce((seed, next, index) => {
+  if (index !== 0 && !(index % 4)) seed += " ";
+  return seed + next;
+}, "");
+function myfuction(){
+    var x=document.getElementById("card-no");
+    x.innerHTML="**** **** ****"
+}
+    </script>
+</body>
+</html>
